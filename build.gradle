@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.2.2'
+    compile 'com.sparkjava:spark-core:2.5'
+    compile 'org.slf4j:slf4j-api:1.7.14'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.6.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.6.0'
+
+    testCompile 'junit:junit:4.12'
+}
