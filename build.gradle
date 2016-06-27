@@ -12,5 +12,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.6.0'
 
+    testCompile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.50.3'
+    testCompile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.9.0'
     testCompile 'junit:junit:4.12'
 }

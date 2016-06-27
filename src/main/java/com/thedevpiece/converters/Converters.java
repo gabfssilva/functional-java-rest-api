@@ -27,7 +27,7 @@ public class Converters {
     public static Function<Document, User> convertDocumentToUser() {
         return (db) ->
                 new User(
-                        db.getString("_id"),
+                        db.get("_id").toString(),
                         db.getString("username"),
                         db.getString("email"),
                         db.getString("occupation"),

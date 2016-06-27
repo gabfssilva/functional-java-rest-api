@@ -2,6 +2,7 @@ package com.thedevpiece.converters;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import spark.ResponseTransformer;
 
 import java.io.IOException;
 import java.util.function.Function;
@@ -14,16 +15,15 @@ import static com.thedevpiece.utils.ExceptionUtils.doThrow;
 public class JsonConverter {
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public static <T> Function<T, String> convertToJson() {
-        return t -> {
-            try {
-                return mapper.writeValueAsString(t);
-            } catch (JsonProcessingException e) {
-                doThrow(e);
-                return null;
-            }
-        };
-    }
+    public static final ResponseTransformer jsonTransformer =
+            t -> {
+                try {
+                    return mapper.writeValueAsString(t);
+                } catch (JsonProcessingException e) {
+                    doThrow(e);
+                    return null;
+                }
+            };
 
     public static <T> Function<String, T> convertToObject(Class<T> type) {
         return t -> {

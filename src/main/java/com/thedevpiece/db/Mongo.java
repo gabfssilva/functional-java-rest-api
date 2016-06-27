@@ -5,6 +5,9 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+import static com.thedevpiece.utils.Props.prop;
+import static java.lang.Integer.parseInt;
+
 /**
  * @author Gabriel Francisco <peo_gfsilva@uolinc.com>
  */
@@ -14,7 +17,7 @@ public class Mongo {
     public static final MongoCollection<Document> users = collection(appDataBase, "users");
 
     public static MongoClient mongoClient() {
-        return new MongoClient();
+        return new MongoClient(prop("mongo.db.hostname", "localhost"), parseInt(prop("mongo.db.port", "27017")));
     }
 
     public static MongoDatabase db(String db) {

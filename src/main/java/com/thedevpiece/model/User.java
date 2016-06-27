@@ -18,6 +18,11 @@ public class User {
         this.age = age;
     }
 
+    public User withId(String id) {
+        this.id = id;
+        return this;
+    }
+
     public String getId() {
         return id;
     }
