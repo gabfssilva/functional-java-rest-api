@@ -17,7 +17,6 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static com.thedevpiece.Application.run;
-import static org.junit.Assert.*;
 
 /**
  * @author Gabriel Francisco <peo_gfsilva@uolinc.com>
