@@ -11,8 +11,8 @@ public class ResponseObject {
     public ResponseObject() {
     }
 
-    public ResponseObject(String body) {
-        this.body = body;
+    public static ResponseObject response() {
+        return new ResponseObject();
     }
 
     public ResponseObject(int status, String location, String body) {
