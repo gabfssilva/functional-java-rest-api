@@ -23,12 +23,14 @@ public class UserApi {
                         .andThen(asDocument)
                         .andThen(doc -> doc.append("_id", ObjectId.get()))
                         .andThen(doc -> save().apply(users, doc))
-                        .andThen(doc -> new ResponseObject().withStatus(201).withLocation("/api/users/" + doc.get("_id").toString()))));
+                        .andThen(doc -> new ResponseObject().withLocation("/api/users/" + doc.get("_id").toString()))
+                        .andThen(resp -> resp.withStatus(201))));
 
         get("/api/users/:id",
                 route(((Function<Request, String>) (req) -> req.params(":id"))
                         .andThen(id -> findById().apply(users, id))
-                        .andThen(doc -> new ResponseObject().withStatus(200).withBody(doc.toJson()))));
+                        .andThen(doc -> new ResponseObject().withBody(doc.toJson()))
+                        .andThen(resp -> resp.withStatus(200))));
     }
 
     public static Route route(final Function<Request, ResponseObject> function) {
